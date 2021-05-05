@@ -1,26 +1,28 @@
 package parkingLot;
-
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 import java.sql.*;
+import automatic_parking.com.client.BaseClient;
+import automatic_parking.com.client.InMemory;
+import automatic_parking.com.client.Mysqlclient;
+import automatic_parking.com.utility.AppConfig;
+import java.util.Scanner;
 
 public class Main {
+	public static void main(String[] args) {
+		AppConfig applicationConfig=new AppConfig();
+	    applicationConfig.fileConfig();
+	    String clientName= applicationConfig.getClient();
+		BaseClient baseClient=new InMemory();
 
-	public static void main(String[] args) throws IOException, SQLException {
-	    Scanner input = new Scanner(System.in);
-	    String clientName = null;
-	    System.out.println("Enter Client");
-	    clientName = input.next();
-	    
-	    BaseClient client=null;
-		if(clientName.equalsIgnoreCase("mysql")){
-			client=new MySqlClient();
-		}
-		else if(clientName.equalsIgnoreCase("inmemory")){
-			client=new InMemoryClient();
-		}
+	    if(clientName.equalsIgnoreCase("mysql"))
+	    {
+	       System.out.println("Client Name - "+clientName);
+	       baseClient=new Mysqlclient();
+		   applicationConfig.mySqlConnection();
+	    }
 	    int menu = 0;
 		do {
 			Menu.options();
