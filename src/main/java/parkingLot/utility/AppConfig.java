@@ -72,9 +72,9 @@ public class ApplicationConfig {
                 this.setStatement(connection.createStatement());
                 System.out.println("Connected with MySQL Database.");
             }catch (Exception e){
-                e.printStackTrace();
+                e.printStackTrace();}
         }
     }
-}}
 
+}
 
