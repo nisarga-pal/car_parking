@@ -68,16 +68,4 @@ public class MongoClient extends BaseClient{
             }
         }
     }
-
-
-    public void createCollection(){
-        MongoCollection<Document> collection=appConfig.getDatabase().getCollection("parking_system");
-        Document document=new Document();
-        for(int i=1;i<101;i++){
-            document.append("Registration Number",null);
-            document.append("Color",null);
-            document.append("_id",i);
-            collection.insertOne(document);
-        }
-    }
 }
