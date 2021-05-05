@@ -23,6 +23,13 @@ public class Main {
 	       baseClient=new Mysqlclient();
 		   applicationConfig.mySqlConnection();
 	    }
+	    else if(clientName.equalsIgnoreCase("mongodb")){
+			System.out.println("Client Name - "+clientName);
+			baseClient=new MongoClient();
+			applicationConfig.mongoConnection();
+			MongoClient mongoClient=(MongoClient) baseClient;
+			mongoClient.createCollection();
+		}
 	    int menu = 0;
 		do {
 			Menu.options();
