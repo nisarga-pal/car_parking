@@ -75,6 +75,15 @@ public class ApplicationConfig {
                 e.printStackTrace();}
         }
     }
-
+    public void mongoConnection(){
+        MongoClient mongoClient =new MongoClient(properties.getProperty("HOST"), Integer.parseInt(properties.getProperty("mongoPort")));
+        MongoDatabase database= mongoClient.getDatabase("neardb");
+        this.setDatabase(database);
+        MongoCollection<Document> collection=database.getCollection("Vehicle");
+        this.setCollection(collection);
+        this.setUpdateFields(new BasicDBObject());
+        this.setSetQuery(new BasicDBObject());
+        this.setWhereQuery(new BasicDBObject());
+    }
 }
 
