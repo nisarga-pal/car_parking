@@ -17,9 +17,9 @@ public abstract class BaseClient {
         	return registrationNumber;
         	return sc.nextLine();
     	}
-        public abstract void SetSlot() throws SQLException;{}
-        public abstract void ToRemoveFromSlot();
-        public abstract void SearchSlotByRegNumber();
-        public abstract void SearchCarByColor();
+        public abstract void setSlot() throws SQLException;{}
+        public abstract void RemoveFromSlot();
+        public abstract void searchSlotByRegNumber();
+        public abstract void searchCarByColor();
         public abstract void searchSlotByColor();
 }
