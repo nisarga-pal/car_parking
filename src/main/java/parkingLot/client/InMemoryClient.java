@@ -1,4 +1,4 @@
-package parkingLot;
+package parkingLot.client;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +21,7 @@ public class InMemoryClient extends BaseClient {
 	    301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,
 	    401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420);
 		}
-	    public void SetSlot() {
+	    public void setSlot() {
 	    
 		int menu;
 		String floor = " ";
@@ -74,7 +74,7 @@ public class InMemoryClient extends BaseClient {
 	               
 	                System.out.println("Floor: "+floor+"\n"+"Slot no: "+min+"\n"+"Colour:"+colour+"\n"+"Reg Plate:"+regPlate+"\n"+"Date:"+strDate+"\n\n");
 		}
-		public void ToRemoveFromSlot() {
+		public void RemoveFromSlot() {
 		
 			if(Occupied.isEmpty()) {
 				System.out.println("No cars in the slot!");
@@ -102,7 +102,7 @@ public class InMemoryClient extends BaseClient {
 			}
 		}
 		
-		public void SearchSlotByRegNumber() {
+		public void searchSlotByRegNumber() {
 			System.out.println("Enter Reg No of your Car");
 	    	String RegNo= input.next();
 	    	int count=0;
@@ -119,7 +119,7 @@ public class InMemoryClient extends BaseClient {
 	    	}
 			
 		}
-		public void SearchSlotByColor() {
+		public void searchSlotByColor() {
 			System.out.println("Enter the color");
 	    	String Clr= input.next();
 	    	int count=0;
@@ -137,7 +137,7 @@ public class InMemoryClient extends BaseClient {
 	    	}
 			
 		}
-		public void SearchCarByColor() {
+		public void searchCarByColor() {
 			System.out.println("Enter the color");
 	    	String Clr= input.next();
 	    	int count=0;
