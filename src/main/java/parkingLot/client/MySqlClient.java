@@ -1,4 +1,4 @@
-package parkingLot;
+package parkingLot.client;
 import java.sql.*;
 import java.util.*;
 
