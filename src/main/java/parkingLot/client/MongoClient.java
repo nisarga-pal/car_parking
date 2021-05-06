@@ -8,7 +8,7 @@ import com.mongodb.client.model.Filters;
 public class MongoClient extends BaseClient{
     AppConfig appConfig=new AppConfig();
     
-    public void SetSlot() {
+    public void setSlot() {
             String regNumber=registrationNumber();
             String color=color();
             BasicDBObject updateDocument = new BasicDBObject();
@@ -49,7 +49,7 @@ public class MongoClient extends BaseClient{
     }
 
     
-    public void ToRemoveFromSlot() {
+    public void removeFromSlot() {
         String regNumber=registrationNumber();
         Bson filter=new Document("Registration Number",regNumber);
         Bson newValue = new Document("Registration Number",null).append("Color",null);
@@ -59,7 +59,7 @@ public class MongoClient extends BaseClient{
     }
 
     
-    public void SearchSlotByRegNumber() {
+    public void searchSlotByRegNumber() {
         String regNumber=registrationNumber();
         FindIterable<Document> documents=appConfig.getDocument().find();
         for (Document info:documents){
@@ -70,7 +70,7 @@ public class MongoClient extends BaseClient{
     }
     
     
-    public void SearchCarByColor() {
+    public void searchCarByColor() {
         String color=color();
         FindIterable<Document> documents=appConfig.getDocument().find();
         for(Document info:documents){
@@ -81,7 +81,7 @@ public class MongoClient extends BaseClient{
     }
 
     
-    public void SearchSlotByColor() {
+    public void searchSlotByColor() {
         String color=color();
         FindIterable<Document> documents=appConfig.getDocument().find();
         for(Document info:documents){
