@@ -18,7 +18,7 @@ public class RedisClient extends BaseClient {
             if (!appConfig.redisConnection().hexists(index,"Registration_Number")){
                 appConfig.redisConnection().hmset(index, slotHash);
                 System.out.println("car is Entered.");
-                System.out.println(" Slot INFO - " + appConfig.redisConnection().hmget(index, "Registration_Number", "Color","Slot_Number"));
+                System.out.println(" Alloting Slot ... " + appConfig.redisConnection().hmget(index, "Registration_Number", "Color","Slot_Number"));
                 break;
            }
         }
