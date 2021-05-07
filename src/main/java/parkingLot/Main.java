@@ -30,13 +30,6 @@ public class Main {
 			MongoClient mongoClient=(MongoClient) baseClient;
 			mongoClient.createCollection();
 	       }
-	    else if (clientName.equalsIgnoreCase("redis")){
-			System.out.println("Client Name - "+clientName);
-			baseClient=new RedisClient();
-			applicationConfig.redisConnection();
-			RedisClient redisClient= (RedisClient) baseClient;
-			redisClient.createHash();
-		}
 	    	int menu = 0;
 		do {
 		     Menu.options();
