@@ -1,4 +1,4 @@
-package parkingLot;
+package parkingLot.client;
 import java.sql.*;
 import java.util.*;
 
@@ -6,7 +6,7 @@ import java.util.*;
 	   static Scanner input = new Scanner(System.in);
 	   static MySQL mysql=new MySQL();
 	   static Connection con = mysql.create();
-	   public void SetSlot() throws SQLException {
+	   public void setSlot() throws SQLException {
 		System.out.println("Enter Colour");
 	    	String colour = input.next();
 	    	System.out.println("Enter Reg Plate");
@@ -62,7 +62,7 @@ import java.util.*;
 	         	}
 		}
 		
-		public void ToRemoveFromSlot(){
+		public void removeFromSlot(){
 	        System.out.println("Enter Reg Plate");
 	    	String regPlate = input.next();
 	        String updQuery2="UPDATE ParkingSystem SET regNumber=?,colour=?,time=? WHERE regNumber=?";
@@ -79,7 +79,7 @@ import java.util.*;
 	            System.out.println(throwable.getMessage());
 	        }
 	    }
-		public void SearchCarByColor(){
+		public void searchCarByColor(){
 			 
 		            try{
 		                Statement stmt=con.createStatement();
@@ -98,7 +98,7 @@ import java.util.*;
 		            }
 		        }
 
-		public void SearchSlotByRegNumber(){
+		public void searchSlotByRegNumber(){
 		            try {
 		                Statement stmt = con.createStatement();
 		                Scanner sc = new Scanner(System.in);

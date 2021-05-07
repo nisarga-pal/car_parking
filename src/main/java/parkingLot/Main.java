@@ -12,10 +12,10 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		AppConfig applicationConfig=new AppConfig();
+	    AppConfig applicationConfig=new AppConfig();
 	    applicationConfig.fileConfig();
 	    String clientName= applicationConfig.getClient();
-		BaseClient baseClient=new InMemory();
+	    BaseClient baseClient=new InMemory();
 
 	    if(clientName.equalsIgnoreCase("mysql"))
 	    {
@@ -23,26 +23,33 @@ public class Main {
 	       baseClient=new Mysqlclient();
 		   applicationConfig.mySqlConnection();
 	    }
-	    int menu = 0;
+	    else if(clientName.equalsIgnoreCase("mongodb")){
+			System.out.println("Client Name - "+clientName);
+			baseClient=new MongoClient();
+			applicationConfig.mongoConnection();
+			MongoClient mongoClient=(MongoClient) baseClient;
+			mongoClient.createCollection();
+	       }
+	    	int menu = 0;
 		do {
-			Menu.options();
-			menu = input.nextInt();
+		     Menu.options();
+		     menu = input.nextInt();
       
-		switch(menu) {
+		     switch(menu) {
 			case(1):
-				client.SetSlot();
+				baseClient.setSlot();
 				break;
 			case(2):
-				client.ToRemoveFromSlot();
+				baseClient.removeFromSlot();
 				break;
 			case(3):
-				client.SearchSlotByRegNumber();
+				baseClient.searchSlotByRegNumber();
 				break;
            		case(4):
-            			client.SearchCarByColor();
+            			baseClient.searchCarByColor();
 				break;
           		case(5):
-           		 	client.SearchSlotByColor();//
+           		 	baseClient.searchSlotByColor();//
 				break;
 			case(0):
                			 System.out.println("\nThank you!\n");

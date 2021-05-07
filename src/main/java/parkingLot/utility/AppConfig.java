@@ -1,19 +1,11 @@
-package parkingLot; 
+package parkingLot.utility; 
 import java.io.FileReader;
 import java.sql.*;
-import java.util.Properties;
-import java.util.Scanner;
-import java.io.FileReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.util.Properties;
-import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.apache.http.HttpHost;
+import java.util*;
+import com.mongodb.*;
+import com.mongodb.client.*;
 import org.bson.Document;
+import redis.clients.jedis.Jedis;
 
 public class ApplicationConfig {
     private static Connection connection;
@@ -75,6 +67,8 @@ public class ApplicationConfig {
                 e.printStackTrace();}
         }
     }
-
+        public void redisConnection() {
+        this.setJedis(new Jedis(properties.getProperty("HOST")));
+    }
 }
 
