@@ -5,12 +5,12 @@ import redis.clients.jedis.Jedis;
 
 public class RedisClient extends BaseClient {
     AppConfig appConfig=new AppConfig();
-
+    Scanner sc=new Scanner(System.in);
     
     public void setSlot() {
         String regNumber=registrationNumber();
         String color=color();
-        for (int i=1; i<6; i++) {
+        for (int i=1; i<60; i++) {
             Map<String, String> slotHash = new HashMap<>();
             String index=String.valueOf(i);
             slotHash.put("Registration_Number", registrationNumber);
@@ -26,7 +26,7 @@ public class RedisClient extends BaseClient {
   
     public void removeFromSlot() {
         String registrationNumber = registrationNumber();
-        for (int i =1;i<6;i++){
+        for (int i =1;i<60;i++){
             String index=String.valueOf(i);
             if (appConfig.redisConnection().hget(index,"Registration_Number").equalsIgnoreCase(registrationNumber)){
                 appConfig.redisConnection().hdel(index,"Registration_Number");
@@ -39,7 +39,7 @@ public class RedisClient extends BaseClient {
 
     public void searchCarByColor() {
         String color=color();
-        for (int i = 1; i < 6; i++) {
+        for (int i = 1; i < 60; i++) {
             String index = String.valueOf(i);
             if (appConfig.redisConnection().hget(index, "Color")!=null && appConfig.redisConnection().hget(index, "Color").equalsIgnoreCase(color)) {
                 System.out.println(appConfig.redisConnection().hget(index, "Registration_Number"));
@@ -49,7 +49,7 @@ public class RedisClient extends BaseClient {
    
     public void searchSlotByRegNumber() {
         String registrationNumber=registrationNumber();
-        for (int i=1;i<6;i++){
+        for (int i=1;i<60;i++){
             String index=String.valueOf(i);
             if (appConfig.redisConnection().hget(index,"Registration_Number")!=null && appConfig.redisConnection().hget(index,"Registration_Number").equalsIgnoreCase(registrationNumber)){
                 System.out.println(appConfig.redisConnection().hget(index,"Slot_Number"));
@@ -59,7 +59,7 @@ public class RedisClient extends BaseClient {
     
     public void searchSlotByColor() {
         String color=color();
-        for (int i=1;i<6;i++){
+        for (int i=1;i<60;i++){
             String index=String.valueOf(i);
             if (appConfig.redisConnection().hget(index,"Color")!=null && appConfig.redisConnection().hget(index,"Color").equalsIgnoreCase(color)){
                 System.out.println(appConfig.redisConnection().hget(index,"Slot_Number"));
